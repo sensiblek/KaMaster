@@ -18,10 +18,10 @@ java -jar KaMaster.jar
 
 ## Agent 설정파일 변경
 
-config/agent.properties 파일의 포트번호와 Master 서버 연결 정보를 수정한다.
+config/agent.properties 파일의 포트번호와 Master 서버 연결정보, 파일저장 위치를 수정한다.
 
 1대의 PC 에서 Agent2 를 기동하려면
-config/agent2.properties 파일의 포트번호와 Master 서버 연결 정보를 수정한다.
+config/agent2.properties 파일의 포트번호와 Master 서버 연결 정보, 파일저장 위치를 수정한다.
 
 ## Agent 1 실행
 
