@@ -2,10 +2,6 @@ package kakao.mft.master.props;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
@@ -24,24 +20,9 @@ public class MasterProperty implements MasterPropertyKey {
 		String path = System.getProperty(MASTER_CONFIG);
 		Path filePath = null;
 
-		if (path == null) {
-			try {
-				if (this.getClass().getResource("/") == null) {
-					URLClassLoader c = (URLClassLoader)ClassLoader.getSystemClassLoader();
-					URL[] urls = c.getURLs();
-					URI resolvedUri;
-					for(URL url:urls) {
-						resolvedUri = url.toURI().resolve("config/" + MASTER_CONFIG_FILE);
-						if (Paths.get(resolvedUri).toFile().exists()) {
-							filePath = Paths.get(resolvedUri);
-							break;
-						}
-					}
-				} else {
-					Path rootPath = Paths.get(this.getClass().getResource("/").toURI());
-					filePath = rootPath.resolve("config/" + MASTER_CONFIG_FILE);
-				}
-			} catch (URISyntaxException e) {}
+		if (path == null) {	
+			Path rootPath = Paths.get("");
+			filePath = rootPath.resolve("config/" + MASTER_CONFIG_FILE);
 		} else {
 			filePath = Paths.get(path);
 		}
